@@ -12,7 +12,7 @@
 
 (function(){
     const doc = app.activeDocument;
-    const printagem       = new Printagem("Trabalho");
+    const printagem       = new Printagem("Main");
     const util                  = new Util();
     const managerLayers = new FactoryManagerLayers(util);
     const managerBones = new FactoryBoneManager();        
@@ -24,7 +24,7 @@
     var layersOrganizados = managerLayers.organizarLayers(doc.layers);
     var indiceGrupoEscolhido = 0;
 
-    var dlg = new Window('dialog',"Trabalho", undefined, {closeButton:true});
+    var dlg = new Window('dialog',"Main", undefined, {closeButton:true});
     dlg.alignChildren = "left";    
     var tpanel = dlg.add("tabbedpanel");
     tpanel.preferredSize.width=280;
