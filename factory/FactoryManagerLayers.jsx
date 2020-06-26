@@ -1,12 +1,13 @@
 ﻿#include "FactoryGrupoAcao.jsx"
 #include "../funcionalidades/LinhaDoTempo.jsx"
 #include "../funcionalidades/SpriteSheet.jsx"
+#include "../utils/Util.jsx"
 
-var FactoryManagerLayers = function(utilParam){    
+var FactoryManagerLayers = function(){    
     const factoryGrupoAcao = new FactoryGrupoAcao();     
-    const util = utilParam;
-    const linhaDoTempo = new LinhaDoTempo();
-    const spriteSheet     = new SpriteSheet();
+    const util             = new Util();
+    const linhaDoTempo     = new LinhaDoTempo();
+    const spriteSheet      = new SpriteSheet();
     
     var arrayGrupoAcao = [];
     
