@@ -1,4 +1,4 @@
-﻿var Helper = function(){    
+﻿var Opacidade = function(){    
     
     function isLayerVisivel(artLayer){
         if(!artLayer.visible){
@@ -20,7 +20,7 @@
      }
     
     return{
-            opacidade100 : function(doc){
+            todasCamadasVisiveis : function(doc){
                 var layers = doc.layers;
                 for(var contador = 0; contador< layers.length; contador++){
                     if(layers[contador].typename == "ArtLayer"){                        
