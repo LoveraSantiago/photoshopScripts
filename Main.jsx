@@ -12,12 +12,12 @@
 
 (function(){
     const doc = app.activeDocument;
-    const printagem       = new Printagem("Main");
-    const util                  = new Util();
-    const managerLayers = new FactoryManagerLayers(util);
-    const managerBones = new FactoryBoneManager();        
+    const printagem        = new Printagem("Main");
+    const util             = new Util();
+    const managerLayers    = new FactoryManagerLayers(util);
+    const managerBones     = new FactoryBoneManager();        
     const orqtLinhaDoTempo = new FactoryLinhaDoTempo();
-    const helper             = new Helper();
+    const helper           = new Helper();
     
     const arrayTamanhos = [1, 2, 4, 8];
         
