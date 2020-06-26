@@ -13,7 +13,7 @@
 
 (function(){
     const doc = app.activeDocument;
-    const factoryMenuComponents  = new FactoryMenuComponents();
+    const factoryMenuComponents = new FactoryMenuComponents();
     const managerLayers    = new FactoryManagerLayers();
     const managerBones     = new FactoryBoneManager();        
     const orqtLinhaDoTempo = new FactoryLinhaDoTempo();
