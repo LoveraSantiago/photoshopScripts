@@ -9,7 +9,7 @@
 #include "factory/FactoryLinhaDoTempo.jsx"
 #include "factory/FactoryMenuComponents.jsx"
 
-#include "funcionalidades/Helper.jsx"
+#include "funcionalidades/Opacidade.jsx"
 
 (function(){
     const doc = app.activeDocument;
@@ -17,7 +17,7 @@
     const managerLayers    = new FactoryManagerLayers();
     const managerBones     = new FactoryBoneManager();        
     const orqtLinhaDoTempo = new FactoryLinhaDoTempo();
-    const helper           = new Helper();
+    const opacidade        = new Opacidade();
     const util             = new Util();
     const printagem        = new Printagem("Main");
     
@@ -49,7 +49,7 @@
     var groupVisibilidade = factoryMenuComponents.createGroup(tabBones, "Todas Camadas Visiveis");        
     var btnOpacidade = groupVisibilidade.add("button", undefined, "Processar");
     btnOpacidade.onClick = function(){
-        helper.opacidade100(doc);
+        opacidade.todasCamadasVisiveis(doc);
     };    
     
     //TAB DE SPRITES
