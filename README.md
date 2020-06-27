@@ -18,6 +18,7 @@ Para trabalhar com imagens que serão utilizadas em Bones. Geralmente com uso de
 2. Botão para tornar visivel todas as camadas.
 
 <img src="https://raw.githubusercontent.com/LoveraSantiago/photoshopScripts/develop/imgs/excamadabones.png?sanitize=true&raw=true" style="border: 1px solid #000;">
+___
 
 ###### Aba Sprites
 Para trabalhar com imagens que serão utilizadas em Bones. Geralmente com uso de grande numero de layers.
