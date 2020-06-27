@@ -17,8 +17,7 @@
     const factoryMenuComponents = new FactoryMenuComponents();
     const managerLayers    = new FactoryManagerLayers();
     const managerBones     = new FactoryBoneManager();        
-    const orqtLinhaDoTempo = new FactoryLinhaDoTempo();
-    const opacidade        = new Opacidade();
+    const orqtLinhaDoTempo = new FactoryLinhaDoTempo();    
     const util             = new Util();
     const printagem        = new Printagem("Main");
     
@@ -51,6 +50,7 @@
     var groupVisibilidade = factoryMenuComponents.createGroup(tabBones, "Todas Camadas Visiveis");        
     var btnOpacidade = groupVisibilidade.add("button", undefined, "Processar");
     btnOpacidade.onClick = function(){
+        var opacidade = new Opacidade();
         opacidade.todasCamadasVisiveis(doc);
     };    
     
