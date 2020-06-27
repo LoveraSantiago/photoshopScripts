@@ -29,4 +29,4 @@ var manipulacaoArquivo = function(app){
             doc.resizeImage(UnitValue(novaLargura ,"px"), null, null, ResampleMethod.BICUBIC);
         }
     }
-}
+};
