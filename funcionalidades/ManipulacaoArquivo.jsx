@@ -21,6 +21,12 @@ var manipulacaoArquivo = function(app){
         
             application.activeDocument = doc;
             return arquivoCopia;
+        },
+
+        diminuirEscala : function(doc, escala){
+            if(escala == 0) return;
+            var novaLargura = parseInt(doc.width / escala);
+            doc.resizeImage(UnitValue(novaLargura ,"px"), null, null, ResampleMethod.BICUBIC);
         }
     }
 }

@@ -1,8 +1,6 @@
 ﻿#target photoshop
 
 #include "utils/Printagem.jsx"
-#include "utils/StringPrototypes.jsx"
-#include "utils/Util.jsx"
 
 #include "factory/FactoryManagerLayers.jsx"
 #include "factory/FactoryBoneManager.jsx"
@@ -15,10 +13,8 @@
 (function(){
     const doc = app.activeDocument;
     const factoryMenuComponents = new FactoryMenuComponents();
-    const managerLayers    = new FactoryManagerLayers();
-          
-    const orqtLinhaDoTempo = new FactoryLinhaDoTempo();    
-    const util             = new Util();
+    const managerLayers    = new FactoryManagerLayers();          
+    const orqtLinhaDoTempo = new FactoryLinhaDoTempo();        
     const printagem        = new Printagem("Main");
     
     const arrayTamanhos = [1, 2, 4, 8];
@@ -45,7 +41,7 @@
 
        var managerBones = new FactoryBoneManager();  
        managerBones.processarLayers(app, doc, arquivoCopia);              
-       util.diminuirEscala(arquivoCopia, parseInt (editTextEscala.text));
+       manipulacaoArquivo.diminuirEscala(arquivoCopia, parseInt (editTextEscala.text));
        dlg.close();
     };
 
