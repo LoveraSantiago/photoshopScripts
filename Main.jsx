@@ -26,12 +26,8 @@
     var dlg = new Window('dialog',"Main", undefined, {closeButton:true});
     dlg.alignChildren = "left";    
     var tpanel = dlg.add("tabbedpanel");
-    tpanel.preferredSize.width=280;
+    tpanel.preferredSize.width=280;    
     
-    //TAB PARA BONES
-    //Realiza diminuicao do tamanho do desenho dividido pelo  valor de Diminuir Escala E merge de camadas contorno e cores
-    //Ex:
-    //Layers : "1:PeFrente:1", "1:PeFrente:2", "2:PernaFrente:1", "2:PernaFrente:2"
     var tabBones = tpanel.add("tab", undefined, "Bones");
     var groupEscala = factoryMenuComponents.createGroup(tabBones, "Diminuir escala");    
     var editTextEscala = groupEscala.add("edittext", undefined, "0");
