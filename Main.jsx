@@ -10,6 +10,7 @@
 #include "factory/FactoryMenuComponents.jsx"
 
 #include "funcionalidades/Opacidade.jsx"
+#include "funcionalidades/ManipulacaoArquivo.jsx"
 
 (function(){
     const doc = app.activeDocument;
@@ -39,8 +40,9 @@
     var groupEscala = factoryMenuComponents.createGroup(tabBones, "Diminuir escala");    
     var editTextEscala = groupEscala.add("edittext", undefined, "0");
     var btnProcessar = groupEscala.add("button", undefined, "Processar");
-    btnProcessar.onClick = function(){                
-       var arquivoCopia = util.criarCopia(app);       
+    btnProcessar.onClick = function(){      
+       var manipulacaoArquivo = new ManipulacaoArquivo(app);         
+       var arquivoCopia = manipulacaoArquivo.criarCopia(app);       
        managerBones.processarLayers(app, doc, arquivoCopia);              
        util.diminuirEscala(arquivoCopia, parseInt (editTextEscala.text));
        dlg.close();

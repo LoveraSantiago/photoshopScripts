@@ -11,28 +11,6 @@
     } ;   
     
     return {
-        criarCopia : function(app){
-            var doc = app.activeDocument;
-            var name = doc.name.replace (".psd", "") + "_temp.psd"
-             var arquivoCopia = app.documents.add(doc.width, doc.height, doc.resolution, name);
-             for(var contador = doc.layers.length - 1; contador >= 0; contador--){
-                app.activeDocument = doc;
-                doc.layers[contador].duplicate(arquivoCopia);
-            }    
-            
-            app.activeDocument = arquivoCopia;
-            for(var contador = arquivoCopia.layers.length - 1; contador >= 0; contador--){
-                var nomeAtual = arquivoCopia.layers[contador].name;
-                if(nomeAtual == "Plano de Fundo"){
-                    arquivoCopia.layers[contador].remove();
-                    break;
-                }
-            }
-        
-            app.activeDocument = doc;
-            return arquivoCopia;
-        },   
-    
         diminuirEscala : function(doc, escala){
             if(escala == 0) return;
             var novaLargura = parseInt(doc.width / escala);
