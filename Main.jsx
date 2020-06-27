@@ -16,7 +16,7 @@
     const doc = app.activeDocument;
     const factoryMenuComponents = new FactoryMenuComponents();
     const managerLayers    = new FactoryManagerLayers();
-    const managerBones     = new FactoryBoneManager();        
+          
     const orqtLinhaDoTempo = new FactoryLinhaDoTempo();    
     const util             = new Util();
     const printagem        = new Printagem("Main");
@@ -41,7 +41,9 @@
     var btnProcessar = groupEscala.add("button", undefined, "Processar");
     btnProcessar.onClick = function(){      
        var manipulacaoArquivo = new ManipulacaoArquivo(app);         
-       var arquivoCopia = manipulacaoArquivo.criarCopia(app);       
+       var arquivoCopia = manipulacaoArquivo.criarCopia(app);     
+
+       var managerBones = new FactoryBoneManager();  
        managerBones.processarLayers(app, doc, arquivoCopia);              
        util.diminuirEscala(arquivoCopia, parseInt (editTextEscala.text));
        dlg.close();
