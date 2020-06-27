@@ -11,8 +11,9 @@ Para trabalhar com imagens que serão utilizadas em Bones. Geralmente com uso de
     - No input text é colocado o valor pela qual se quer dividir o tamanho do desenho.  
       Ex: 5 (vai diminuir o desenho pelo seu 1/5)
     - As camadas devem estar organizadas no padrão "Numero Grupo: Nome do Grupo: Ordem dentro do grupo".  
-      Ex: "1:PeFrente:1", "1:PeFrente:2", "2:PernaFrente:1", "2:PernaFrente:2"  
-      A imagem resultante fara o merge em 2 camadas "1:PeFrente" e "2:PernaFrente"
+      Ex: "1:PeFrente:1", "1:PeFrente:2", "2:PernaFrente:1", "2:PernaFrente:2".  
+      O resultado fara com que a imagem resultante faça o merge em 2 camadas "1:PeFrente" e "2:PernaFrente".  
+      A imagem abaixo tem um exemplo do nome de camadas.
 
 2. Botão para tornar visivel todas as camadas.
 
