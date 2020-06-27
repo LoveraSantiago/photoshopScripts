@@ -1,6 +1,7 @@
 ﻿#target photoshop
 
 #include "utils/Printagem.jsx"
+#include "utils/StringPrototypes.jsx"
 
 #include "factory/FactoryManagerLayers.jsx"
 #include "factory/FactoryBoneManager.jsx"
