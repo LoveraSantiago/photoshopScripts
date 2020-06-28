@@ -11,17 +11,15 @@
             
             return{//OBJETO GRUPOPOSE
                 originalName : layerSet.name,
-                indice            : parseInt(splits[1]),
-                layer             : layerSet,
-                desligar         : function(){
+                indice       : parseInt(splits[1]),
+                layer        : layerSet,
+                desligar     : function(){
                     this.layer.visible = false;
                 },
                 ligar              : function(){
                     this.layer.visible = true;
                 }
             }
-        }
-    
-    
+        }    
     }
 };

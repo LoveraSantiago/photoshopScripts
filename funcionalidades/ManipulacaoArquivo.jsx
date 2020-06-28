@@ -1,25 +1,71 @@
+#include "../utils/Util.jsx"
+
 var manipulacaoArquivo = function(app){
+
+    const util = new Util();
     var application = app;
+
+    function fazerCopia(doc){        
+        var name = doc.name.replace (".psd", "") + "_temp.psd";
+        var arquivoCopia = application.documents.add(doc.width, doc.height, doc.resolution, name);
+        return arquivoCopia;
+    }
+
+    function removerLayerPlanoDeFundo(arquivo){
+        var originalDoc = application.activeDocument;
+
+        application.activeDocument = arquivo;
+        for(var contador = arquivo.layers.length - 1; contador >= 0; contador--){
+            var nomeAtual = arquivo.layers[contador].name;
+            if(nomeAtual == "Plano de Fundo"){
+                arquivo.layers[contador].remove();
+                break;
+            }
+        }
+
+        application.activeDocument = originalDoc;
+    }
+
     return{
-        criarCopia : function(){
+        aumentarCanvas : function(novoArq, qtdLayers){
+            var doc = app.activeDocument;
+            var novaLargura = doc.width * qtdLayers;
+            
+            app.activeDocument = novoArq;
+            novoArq.resizeCanvas(novaLargura, novoArq.heigth, AnchorPosition.MIDDLELEFT);        
+            
+             app.activeDocument = doc;
+        },
+
+        criarCopia : function(){           
             var doc = application.activeDocument;
-            var name = doc.name.replace (".psd", "") + "_temp.psd"
-             var arquivoCopia = application.documents.add(doc.width, doc.height, doc.resolution, name);
-             for(var contador = doc.layers.length - 1; contador >= 0; contador--){
+            var arquivoCopia = fazerCopia(doc);
+
+            for(var contador = doc.layers.length - 1; contador >= 0; contador--){
                 application.activeDocument = doc;
                 doc.layers[contador].duplicate(arquivoCopia);
-            }    
-            
-            application.activeDocument = arquivoCopia;
-            for(var contador = arquivoCopia.layers.length - 1; contador >= 0; contador--){
-                var nomeAtual = arquivoCopia.layers[contador].name;
-                if(nomeAtual == "Plano de Fundo"){
-                    arquivoCopia.layers[contador].remove();
-                    break;
+            }
+
+            removerLayerPlanoDeFundo(arquivoCopia);            
+            return arquivoCopia;
+        },
+
+        criarCopiaComLayers : function(layersNomes){    
+            var doc = application.activeDocument;        
+            var arquivoCopia = fazerCopia(doc);
+
+            for(var contador = doc.layers.length - 1; contador >= 0; contador--){
+                application.activeDocument = doc;
+
+                var layerAtual = doc.layers[contador];
+                var nomeLayer = layerAtual.name;
+                if(util.isContidoNoArray(nomeLayer, layersNomes)){
+
+                    layerAtual.duplicate(arquivoCopia);
                 }
             }
-        
-            application.activeDocument = doc;
+
+            removerLayerPlanoDeFundo(arquivoCopia);         
             return arquivoCopia;
         },
 

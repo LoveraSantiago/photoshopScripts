@@ -11,14 +11,11 @@
     } ;   
     
     return {
-        aumentarCanvas : function(novoArq, qtdLayers){
-            var doc = app.activeDocument;
-            var novaLargura = doc.width * qtdLayers;
-            
-            app.activeDocument = novoArq;
-            novoArq.resizeCanvas(novaLargura, novoArq.heigth, AnchorPosition.MIDDLELEFT);        
-            
-             app.activeDocument = doc;
+        isContidoNoArray : function(valor, array){
+            for(var contador = 0; contador < array.length; contador++){
+                if(array[contador] == valor) return true;
+            }
+            return false;
         },
         
         ordenarArrayPorIndice : function(array){

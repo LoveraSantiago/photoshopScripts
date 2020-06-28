@@ -15,7 +15,8 @@ var FactoryManagerLayers = function(){
             var nickNameLayers = [];
             
              for(var contador = 0; contador < layers.length; contador++){
-                 if(layers[contador].typename == "LayerSet" && factoryGrupoAcao.isGrupoAcao(layers[contador])){                        
+                 if(layers[contador].typename == "LayerSet" && 
+                    factoryGrupoAcao.isGrupoAcao(layers[contador])){                        
                      arrayGrupoAcao.push(factoryGrupoAcao.criarGrupoAcao(layers[contador]));
                  }
              }
@@ -38,18 +39,6 @@ var FactoryManagerLayers = function(){
             for(var contador = 0; contador < arrayGrupoAcao.length; contador++){
                 arrayGrupoAcao[contador].desligar();
             }
-        },
-             
-        criarSpriteSheet : function(indice, tamanhoEscolhido){
-            var grupoAcaoEscolhido = arrayGrupoAcao[indice];
-            
-            var arquivoCopia = util.criarCopia(app);
-            var widthOriginal = arquivoCopia.width;
-            util.aumentarCanvas(arquivoCopia, grupoAcaoEscolhido.getQtddPoses());
-            
-            spriteSheet.criarSpriteSheet(widthOriginal, arquivoCopia);
-            arquivoCopia.resizeImage(UnitValue((arquivoCopia.width / tamanhoEscolhido) ,"px"), null, null, ResampleMethod.BICUBIC)
-        }
-     
+        }     
     }
 };

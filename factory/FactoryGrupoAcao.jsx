@@ -32,12 +32,26 @@ var FactoryGrupoAcao = function(){
              
              return {//OBJETO GRUPO ACAO
                  originalName  : layerSet.name,
-                 nickName       : split[2],
-                 indice            : parseInt(split[1]),
-                 layerSet         : layerSet,
-                 arrayPoses     : arrayPosesTemp,
+                 nickName      : split[2],
+                 indice        : parseInt(split[1]),
+                 layerSet      : layerSet,
+                 arrayPoses    : arrayPosesTemp,
                  getQtddPoses : function(){
                      return this.arrayPoses.length;
+                 },
+                 getLayersPoses : function(){
+                     var layers[];
+                     for(var contador = 0; contador < this.arrayPoses.length; contador++){
+                         layers.push(this.arrayPoses[contador].layer);
+                     }
+                     return layers;
+                 },
+                 getNomesLayerPoses : function(){
+                    var nomes = [];
+                    for(var contador = 0; contador < this.arrayPoses.length; contador++){
+                        nomes.push(this.arrayPoses[contador].originalName);
+                    }
+                    return nomes;
                  },
                  toString         : function(){
                      return "Grupo Acao :" + this.nickName;
@@ -48,9 +62,7 @@ var FactoryGrupoAcao = function(){
                  ligar            : function(){
                      this.layerSet.visible = true;
                  }
-              } 
-          
-         }
-     
+              }           
+         }     
      }
 };

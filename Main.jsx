@@ -10,6 +10,7 @@
 #include "funcionalidades/Opacidade.jsx"
 #include "funcionalidades/ManipulacaoArquivo.jsx"
 #include "funcionalidades/LinhaDoTempo.jsx"
+#include "funcionalidades/SpriteSheet.jsx"
 
 (function(){
     const doc = app.activeDocument;
@@ -33,7 +34,7 @@
     var btnProcessar = groupEscala.add("button", undefined, "Processar");
     btnProcessar.onClick = function(){      
        var manipulacaoArquivo = new ManipulacaoArquivo(app);         
-       var arquivoCopia = manipulacaoArquivo.criarCopia(app);     
+       var arquivoCopia = manipulacaoArquivo.criarCopia();     
 
        var managerBones = new FactoryBoneManager();  
        managerBones.processarLayers(app, doc, arquivoCopia);              
@@ -72,7 +73,17 @@
     dropDown.selection = 0;
     var btnSpritesheet = groupSpriteSheet.add("button", undefined, "Processar");
     btnSpritesheet.onClick = function(){
-        managerLayers.criarSpriteSheet(indiceGrupoEscolhido, dropDown.selection.index);        
+        var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);
+        var layersNomes = grupoEscolhido.getNomesLayerPoses();
+
+        var manipulacaoArquivo = new ManipulacaoArquivo(app);         
+        var arquivoCopia = manipulacaoArquivo.criarCopiaComLayers(layersNomes);  
+        
+        var tamanhoOriginal = arquivoCopia.width;
+        manipulacaoArquivo.aumentarCanvas(arquivoCopia, layersNomes.length);
+
+        var spriteSheet = new SpriteSheet(app);
+        spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, dropDown.selection);        
         dlg.close();
     };    
 
