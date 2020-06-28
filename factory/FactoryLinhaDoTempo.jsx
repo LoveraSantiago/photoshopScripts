@@ -1,6 +1,0 @@
-﻿var FactoryLinhaDoTempo = function(){
-    
-    return{
-        
-    }
-};

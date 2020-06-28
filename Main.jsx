@@ -5,16 +5,15 @@
 
 #include "factory/FactoryManagerLayers.jsx"
 #include "factory/FactoryBoneManager.jsx"
-#include "factory/FactoryLinhaDoTempo.jsx"
 #include "factory/FactoryMenuComponents.jsx"
 
 #include "funcionalidades/Opacidade.jsx"
 #include "funcionalidades/ManipulacaoArquivo.jsx"
+#include "funcionalidades/LinhaDoTempo.jsx"
 
 (function(){
     const doc = app.activeDocument;
-    const factoryMenuComponents = new FactoryMenuComponents();
-    const orqtLinhaDoTempo = new FactoryLinhaDoTempo();        
+    const factoryMenuComponents = new FactoryMenuComponents();           
     const printagem        = new Printagem("Main");    
     
     const managerLayers    = new FactoryManagerLayers();          
@@ -47,12 +46,8 @@
     btnOpacidade.onClick = function(){
         var opacidade = new Opacidade();
         opacidade.todasCamadasVisiveis(doc);
-    };    
+    };       
     
-    //TAB DE SPRITES
-    //Ex:
-    //Layer Pasta : "ACAO:1:FOGO"
-    //Layer Frames: "POSE:3", "POSE:2", "POSE:1"
     var tabLinhaDoTempo = tpanel.add("tab", undefined, "Sprites");
     var groupAcao = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Grupo Acao:");    
     var dlgList = groupAcao.add("listbox", undefined, layersOrganizados.arrayNickNames);
@@ -63,7 +58,12 @@
     var groupLinhaDoTempo = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Linha do Tempo Grupos:");        
     var btnLinhaDoTempo = groupLinhaDoTempo.add("button", undefined, "Processar");
     btnLinhaDoTempo.onClick = function(){
-        managerLayers.criarLinhaDoTempo(indiceGrupoEscolhido);        
+
+        var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);
+        managerLayers.desligarTodosGruposAcoes();
+
+        var linhaDoTempo = new LinhaDoTempo();
+        linhaDoTempo.criarLinhaDoTempo(grupoEscolhido);
         dlg.close();
     };    
     

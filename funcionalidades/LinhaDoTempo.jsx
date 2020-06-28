@@ -54,62 +54,71 @@ var LinhaDoTempo = function(){
         executeAction( idDplc, desc4, DialogModes.NO );		
     }
     
-    return{
-        limparFramesExistente : function(){
-             var totalFrames = getFrameCount();
-             for(var i = 0; i < totalFrames; i++){
-                goToFrame(i);
-                try{
-                    deleteFrame ();
-                }catch(e){
-                    printagem.printar("ERRO EM LIMPAR FRAMES EXISTENTES");
-                    printagem.printar(e);
-                }
-            } 
-        },
-    
-        criarLinhaDoTempo : function(){
-            var idmakeFrameAnimation = stringIDToTypeID( "makeFrameAnimation" );
-            executeAction( idmakeFrameAnimation, undefined, DialogModes.NO );
-            
-            var idsetd = charIDToTypeID( "setd" );
-            var desc2 = new ActionDescriptor();
-            var idnull = charIDToTypeID( "null" );
-            var ref1 = new ActionReference();
-            var idanimationFrameClass = stringIDToTypeID( "animationFrameClass" );
-            var idOrdn = charIDToTypeID( "Ordn" );
-            var idTrgt = charIDToTypeID( "Trgt" );
-            ref1.putEnumerated( idanimationFrameClass, idOrdn, idTrgt );
-            desc2.putReference( idnull, ref1 );
-            var idT = charIDToTypeID( "T   " );
-            var desc3 = new ActionDescriptor();
-            var idanimationFrameDelay = stringIDToTypeID( "animationFrameDelay" );
-            //desc3.putDouble( idanimationFrameDelay, tempoEscolhido);
-            desc3.putDouble( idanimationFrameDelay, 1.000000);
-            var idanimationFrameClass = stringIDToTypeID( "animationFrameClass" );
-            desc2.putObject( idT, idanimationFrameClass, desc3 );
-            executeAction( idsetd, desc2, DialogModes.NO );
-        },
-    
-        criarFrames : function(qtdd){            
-            for(var contador = 0; contador < qtdd - 1; contador++){                        
-                adicionar1Frame();             
-            }                            
-        },
-    
-        associarLayerComFrame : function(arrayDePoses){
-            for(var contador = 0; contador < arrayDePoses.length; contador++){               
-                 goToFrame(contador + 1);
-                 //desligandoLayers();
-                 
-                 //DESLIGANDO LAYERS POSES
-                 for(var subContador = 0; subContador < arrayDePoses.length; subContador++){
-                     arrayDePoses[subContador].desligar();
-                 }            
-                 
-                 arrayDePoses[contador].ligar();
+    function limparFramesExistente(){
+         var totalFrames = getFrameCount();
+         for(var i = 0; i < totalFrames; i++){
+            goToFrame(i);
+            try{
+                deleteFrame ();
+            }catch(e){
+                printagem.printar("ERRO EM LIMPAR FRAMES EXISTENTES");
+                printagem.printar(e);
             }
-            goToFrame(1); 
+        } 
+    }
+
+    function criarObjetoLinhaDoTempo(){
+        var idmakeFrameAnimation = stringIDToTypeID( "makeFrameAnimation" );
+        executeAction( idmakeFrameAnimation, undefined, DialogModes.NO );
+        
+        var idsetd = charIDToTypeID( "setd" );
+        var desc2 = new ActionDescriptor();
+        var idnull = charIDToTypeID( "null" );
+        var ref1 = new ActionReference();
+        var idanimationFrameClass = stringIDToTypeID( "animationFrameClass" );
+        var idOrdn = charIDToTypeID( "Ordn" );
+        var idTrgt = charIDToTypeID( "Trgt" );
+        ref1.putEnumerated( idanimationFrameClass, idOrdn, idTrgt );
+        desc2.putReference( idnull, ref1 );
+        var idT = charIDToTypeID( "T   " );
+        var desc3 = new ActionDescriptor();
+        var idanimationFrameDelay = stringIDToTypeID( "animationFrameDelay" );
+        //desc3.putDouble( idanimationFrameDelay, tempoEscolhido);
+        desc3.putDouble( idanimationFrameDelay, 1.000000);
+        var idanimationFrameClass = stringIDToTypeID( "animationFrameClass" );
+        desc2.putObject( idT, idanimationFrameClass, desc3 );
+        executeAction( idsetd, desc2, DialogModes.NO );
+    }
+
+    function criarFrames(qtdd){            
+        for(var contador = 0; contador < qtdd - 1; contador++){                        
+            adicionar1Frame();             
+        }                            
+    }
+
+    function associarLayerComFrame(arrayDePoses){
+        for(var contador = 0; contador < arrayDePoses.length; contador++){               
+             goToFrame(contador + 1);
+             //desligandoLayers();
+             
+             //DESLIGANDO LAYERS POSES
+             for(var subContador = 0; subContador < arrayDePoses.length; subContador++){
+                 arrayDePoses[subContador].desligar();
+             }            
+             
+             arrayDePoses[contador].ligar();
+        }
+        goToFrame(1); 
+    }
+
+    return{    
+        criarLinhaDoTempo : function(grupoAcaoEscolhido){
+            limparFramesExistente();
+            criarObjetoLinhaDoTempo();
+
+            grupoAcaoEscolhido.ligar();
+            criarFrames(grupoAcaoEscolhido.getQtddPoses());
+            associarLayerComFrame(grupoAcaoEscolhido.arrayPoses);
         }
     
     }

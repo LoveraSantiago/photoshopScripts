@@ -1,12 +1,10 @@
 ﻿#include "FactoryGrupoAcao.jsx"
-#include "../funcionalidades/LinhaDoTempo.jsx"
 #include "../funcionalidades/SpriteSheet.jsx"
 #include "../utils/Util.jsx"
 
 var FactoryManagerLayers = function(){    
     const factoryGrupoAcao = new FactoryGrupoAcao();     
-    const util             = new Util();
-    const linhaDoTempo     = new LinhaDoTempo();
+    const util             = new Util();    
     const spriteSheet      = new SpriteSheet();
     
     var arrayGrupoAcao = [];
@@ -35,23 +33,13 @@ var FactoryManagerLayers = function(){
         getGrupoAcaoEscolhido : function(indice){
             return arrayGrupoAcao[indice];
         },
-    
-         criarLinhaDoTempo : function(indice){
-             var grupoAcaoEscolhido = arrayGrupoAcao[indice];
+
+        desligarTodosGruposAcoes : function(){
+            for(var contador = 0; contador < arrayGrupoAcao.length; contador++){
+                arrayGrupoAcao[contador].desligar();
+            }
+        },
              
-             linhaDoTempo.limparFramesExistente();
-             
-             //DESABILITANDO LAYERS DE GRUPOS DE ACAO
-             for(var contador = 0; contador < arrayGrupoAcao.length; contador++){
-                 arrayGrupoAcao[contador].desligar();
-             }
-         
-             linhaDoTempo.criarLinhaDoTempo ();
-             grupoAcaoEscolhido.ligar();
-             linhaDoTempo.criarFrames(grupoAcaoEscolhido.getQtddPoses());
-             linhaDoTempo.associarLayerComFrame(grupoAcaoEscolhido.arrayPoses);
-         },
-     
         criarSpriteSheet : function(indice, tamanhoEscolhido){
             var grupoAcaoEscolhido = arrayGrupoAcao[indice];
             
