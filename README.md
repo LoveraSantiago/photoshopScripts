@@ -37,7 +37,7 @@ Para trabalhar com imagens que serão utilizadas em Bones. Geralmente com uso de
 
 
 ###### Imagem B referencia a camadas de sprites
-<img src="https://raw.githubusercontent.com/LoveraSantiago/photoshopScripts/develop/imgs/excamadabones.png?sanitize=true&raw=true" style="border: 1px solid #000;">
+<img src="https://raw.githubusercontent.com/LoveraSantiago/photoshopScripts/develop/imgs/excamadassprites.png?sanitize=true&raw=true" style="border: 1px solid #000;">
 
 ###### Imagem C exemplo de linha do tempo montada
 <img src="https://raw.githubusercontent.com/LoveraSantiago/photoshopScripts/develop/imgs/exlinhadetempo.png?sanitize=true&raw=true" style="border: 1px solid #000;">
