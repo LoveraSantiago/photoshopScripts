@@ -14,13 +14,13 @@
 (function(){
     const doc = app.activeDocument;
     const factoryMenuComponents = new FactoryMenuComponents();
-    const managerLayers    = new FactoryManagerLayers();          
     const orqtLinhaDoTempo = new FactoryLinhaDoTempo();        
-    const printagem        = new Printagem("Main");
+    const printagem        = new Printagem("Main");    
+    
+    const managerLayers    = new FactoryManagerLayers();          
+    var layersOrganizados = managerLayers.organizarLayers(doc.layers);
     
     const arrayTamanhos = [1, 2, 4, 8];
-        
-    var layersOrganizados = managerLayers.organizarLayers(doc.layers);
     var indiceGrupoEscolhido = 0;
 
     var dlg = new Window('dialog',"Main", undefined, {closeButton:true});
@@ -38,7 +38,7 @@
 
        var managerBones = new FactoryBoneManager();  
        managerBones.processarLayers(app, doc, arquivoCopia);              
-       manipulacaoArquivo.diminuirEscala(arquivoCopia, parseInt (editTextEscala.text));
+       manipulacaoArquivo.diminuirEscala(arquivoCopia, parseInt(editTextEscala.text));
        dlg.close();
     };
 
