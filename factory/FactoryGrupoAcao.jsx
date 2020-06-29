@@ -40,7 +40,7 @@ var FactoryGrupoAcao = function(){
                      return this.arrayPoses.length;
                  },
                  getLayersPoses : function(){
-                     var layers[];
+                     var layers = [];
                      for(var contador = 0; contador < this.arrayPoses.length; contador++){
                          layers.push(this.arrayPoses[contador].layer);
                      }
