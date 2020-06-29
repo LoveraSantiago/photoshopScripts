@@ -73,14 +73,13 @@
     dropDown.selection = 0;
     var btnSpritesheet = groupSpriteSheet.add("button", undefined, "Processar");
     btnSpritesheet.onClick = function(){
-        var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);
-        var layersNomes = grupoEscolhido.getNomesLayerPoses();
+        var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);        
 
         var manipulacaoArquivo = new ManipulacaoArquivo(app);         
-        var arquivoCopia = manipulacaoArquivo.criarCopiaComLayers(layersNomes);  
+        var arquivoCopia = manipulacaoArquivo.criarCopiaComLayers(grupoEscolhido.originalName);  
         
         var tamanhoOriginal = arquivoCopia.width;
-        manipulacaoArquivo.aumentarCanvas(arquivoCopia, layersNomes.length);
+        manipulacaoArquivo.aumentarCanvas(arquivoCopia);
 
         var spriteSheet = new SpriteSheet(app);
         spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, dropDown.selection);        

@@ -27,9 +27,9 @@ var ManipulacaoArquivo = function(app){
     }
 
     return{
-        aumentarCanvas : function(novoArq, qtdLayers){
+        aumentarCanvas : function(novoArq){
             var doc = app.activeDocument;
-            var novaLargura = doc.width * qtdLayers;
+            var novaLargura = doc.width * novoArq.layers.length;
             
             app.activeDocument = novoArq;
             novoArq.resizeCanvas(novaLargura, novoArq.heigth, AnchorPosition.MIDDLELEFT);        
@@ -50,7 +50,7 @@ var ManipulacaoArquivo = function(app){
             return arquivoCopia;
         },
 
-        criarCopiaComLayers : function(layersNomes){    
+        criarCopiaComLayers : function(nomeGrupo){    
             var doc = application.activeDocument;        
             var arquivoCopia = fazerCopia(doc);
 
@@ -59,9 +59,13 @@ var ManipulacaoArquivo = function(app){
 
                 var layerAtual = doc.layers[contador];
                 var nomeLayer = layerAtual.name;
-                if(util.isContidoNoArray(nomeLayer, layersNomes)){
+                if(nomeLayer == nomeGrupo){
 
-                    layerAtual.duplicate(arquivoCopia);
+                    for(var subContador = layerAtual.layers.length -1; subContador >= 0; subContador--){
+                        var subLayerAtual = layerAtual.layers[subContador];
+                        subLayerAtual.duplicate(arquivoCopia);
+                    }
+
                 }
             }
 
