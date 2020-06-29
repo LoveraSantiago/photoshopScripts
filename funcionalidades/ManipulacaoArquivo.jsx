@@ -1,6 +1,6 @@
 #include "../utils/Util.jsx"
 
-var manipulacaoArquivo = function(app){
+var ManipulacaoArquivo = function(app){
 
     const util = new Util();
     var application = app;
