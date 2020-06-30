@@ -82,7 +82,7 @@
         manipulacaoArquivo.aumentarCanvas(arquivoCopia);
 
         var spriteSheet = new SpriteSheet(app);
-        spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, dropDown.selection);        
+        spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, arrayTamanhos[dropDown.selection.index]);        
         dlg.close();
     };    
 
