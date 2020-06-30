@@ -35,9 +35,18 @@ Para trabalhar com imagens que serão utilizadas em Bones. Geralmente com uso de
  *A imagem C abaixo mostra a linha do tempo montada.*  
  **A linha do tempo deve estar habilitada na aba Janela>Linha do Tempo**
 
+3. Monta o sprite sheet a partir do grupo ação selecionado com os layers nomeados pose.  
+    - No dropdown list é selecionado o tamanho pela qual o desenho resultante sera dividido.  
+      Os valores são 1, 2, 4 e 8
+    - Ao clicar em processar o spritesheet é montado na ordem das camadas poses montadas.  
+    *A imagem D abaixo mostra o resultado em spritesheet.*  
+
 
 ###### Imagem B referencia a camadas de sprites
 <img src="https://raw.githubusercontent.com/LoveraSantiago/photoshopScripts/develop/imgs/excamadassprites.png?sanitize=true&raw=true" style="border: 1px solid #000;">
 
 ###### Imagem C exemplo de linha do tempo montada
 <img src="https://raw.githubusercontent.com/LoveraSantiago/photoshopScripts/develop/imgs/exlinhadetempo.png?sanitize=true&raw=true" style="border: 1px solid #000;">
+
+###### Imagem D exemplo de spritesheet montado
+<img src="https://raw.githubusercontent.com/LoveraSantiago/photoshopScripts/develop/imgs/exspritesheets.png?sanitize=true&raw=true" style="border: 1px solid #000;">
