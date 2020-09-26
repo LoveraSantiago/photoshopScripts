@@ -11,6 +11,7 @@
 #include "funcionalidades/SpriteSheet.jsx"
 
 #include "uis/TabBones.jsx"
+#include "uis/TabLinhaDoTempo.jsx"
 
 (function(){
     const doc = app.activeDocument;
@@ -30,25 +31,16 @@
 
     var tabBones = new TabBones();
     tabBones.criarTab(app, doc, dlg, tpanel);
+
+    var tabLinhaDoTempo = new TabLinhaDoTempo();
+    tabLinhaDoTempo.criarTab(doc, tpanel);
     
     var tabSprites = tpanel.add("tab", undefined, "Sprites");
     var groupAcao = factoryMenuComponents.createGroup(tabSprites, "Grupo Acao:");    
     var dlgList = groupAcao.add("listbox", undefined, layersOrganizados.arrayNickNames);
     dlgList.onChange = function(){
         indiceGrupoEscolhido = dlgList.selection.index;        
-    };
-    
-    var groupLinhaDoTempo = factoryMenuComponents.createGroup(tabSprites, "Linha do Tempo Grupos:");        
-    var btnLinhaDoTempo = groupLinhaDoTempo.add("button", undefined, "Processar");
-    btnLinhaDoTempo.onClick = function(){
-
-        var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);
-        managerLayers.desligarTodosGruposAcoes();
-
-        var linhaDoTempo = new LinhaDoTempo();
-        linhaDoTempo.criarLinhaDoTempo(grupoEscolhido);
-        dlg.close();
-    };    
+    };   
     
     var groupSpriteSheet = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet escala:");            
     var dropDown = groupSpriteSheet.add("dropdownlist", undefined, arrayTamanhos);
