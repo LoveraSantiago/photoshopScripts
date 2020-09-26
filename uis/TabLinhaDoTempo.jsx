@@ -7,6 +7,8 @@ var TabLinhaDoTempo = function(){
 
     const factoryMenuComponents = new FactoryMenuComponents();  
     const managerLayers    = new FactoryManagerLayers();  
+    const arrayTempos = [0.1, 0.2, 0.5, 1, 2, 5, 10];
+    const valoresTempo = [0.100000, 0.200000, 0.500000, 1.000000, 2.000000, 5.000000, 10.000000];
 
     var indiceGrupoEscolhido = 0;
 
@@ -20,7 +22,10 @@ var TabLinhaDoTempo = function(){
             indiceGrupoEscolhido = dlgList.selection.index;        
         };
 
-        var groupLinhaDoTempo = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Linha do Tempo Grupos:");        
+        var groupLinhaDoTempo = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Linha do Tempo Grupos:");    
+        var dropDown = groupLinhaDoTempo.add("dropdownlist", undefined, arrayTempos);
+        dropDown.selection = 0;
+
         var btnLinhaDoTempo = groupLinhaDoTempo.add("button", undefined, "Processar");
 
         btnLinhaDoTempo.onClick = function(){
@@ -29,7 +34,7 @@ var TabLinhaDoTempo = function(){
             managerLayers.desligarTodosGruposAcoes();
     
             var linhaDoTempo = new LinhaDoTempo();
-            linhaDoTempo.criarLinhaDoTempo(grupoEscolhido);
+            linhaDoTempo.criarLinhaDoTempo(grupoEscolhido, valoresTempo[dropDown.selection.index]);
             dlg.close();
         };    
     }

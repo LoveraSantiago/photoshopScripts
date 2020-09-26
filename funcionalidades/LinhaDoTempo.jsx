@@ -67,7 +67,7 @@ var LinhaDoTempo = function(){
         } 
     }
 
-    function criarObjetoLinhaDoTempo(){
+    function criarObjetoLinhaDoTempo(tempoEscolhido){
         var idmakeFrameAnimation = stringIDToTypeID( "makeFrameAnimation" );
         executeAction( idmakeFrameAnimation, undefined, DialogModes.NO );
         
@@ -83,8 +83,8 @@ var LinhaDoTempo = function(){
         var idT = charIDToTypeID( "T   " );
         var desc3 = new ActionDescriptor();
         var idanimationFrameDelay = stringIDToTypeID( "animationFrameDelay" );
-        //desc3.putDouble( idanimationFrameDelay, tempoEscolhido);
-        desc3.putDouble( idanimationFrameDelay, 1.000000);
+        desc3.putDouble( idanimationFrameDelay, tempoEscolhido);
+        // desc3.putDouble( idanimationFrameDelay, 0.100000);
         var idanimationFrameClass = stringIDToTypeID( "animationFrameClass" );
         desc2.putObject( idT, idanimationFrameClass, desc3 );
         executeAction( idsetd, desc2, DialogModes.NO );
@@ -112,9 +112,9 @@ var LinhaDoTempo = function(){
     }
 
     return{    
-        criarLinhaDoTempo : function(grupoAcaoEscolhido){
+        criarLinhaDoTempo : function(grupoAcaoEscolhido, tempoEscolhido){
             limparFramesExistente();
-            criarObjetoLinhaDoTempo();
+            criarObjetoLinhaDoTempo(tempoEscolhido);
 
             grupoAcaoEscolhido.ligar();
             criarFrames(grupoAcaoEscolhido.getQtddPoses());
