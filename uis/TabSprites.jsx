@@ -23,6 +23,10 @@ var TabSprites = function(){
             indiceGrupoEscolhido = dlgList.selection.index;        
         };   
         
+        criarGrupoProcessamentoPorAcao(tabSprites);
+    }
+    
+    function criarGrupoProcessamentoPorAcao(tabSprites){
         var groupSpriteSheet = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet escala:");            
         var dropDown = groupSpriteSheet.add("dropdownlist", undefined, arrayTamanhos);
         dropDown.selection = 0;
@@ -41,6 +45,8 @@ var TabSprites = function(){
             dlg.close();
         };    
     }
+
+    
 
     return{
         criarTab : function(app, doc, dlg, painel){
