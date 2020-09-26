@@ -33,6 +33,7 @@ var TabBones = function(){
         btnOpacidade.onClick = function(){
             var opacidade = new Opacidade();
             opacidade.todasCamadasVisiveis(doc);
+            dlg.close();
         };       
     }
 
