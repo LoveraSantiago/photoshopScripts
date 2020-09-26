@@ -12,7 +12,7 @@ var TabLinhaDoTempo = function(){
 
     var indiceGrupoEscolhido = 0;
 
-    function criarTabLinhaDoTempo(doc, dlg, painel){
+    function criarTabLinhaDoTempo(app, doc, dlg, painel){
         var tabLinhaDoTempo = painel.add("tab", undefined, "LinhaDoTempo");
         var groupAcao = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Grupo Acao:"); 
 
@@ -34,14 +34,14 @@ var TabLinhaDoTempo = function(){
             managerLayers.desligarTodosGruposAcoes();
     
             var linhaDoTempo = new LinhaDoTempo();
-            linhaDoTempo.criarLinhaDoTempo(grupoEscolhido, valoresTempo[dropDown.selection.index]);
+            linhaDoTempo.criarLinhaDoTempo(app, grupoEscolhido, valoresTempo[dropDown.selection.index]);
             dlg.close();
         };    
     }
 
     return{
-        criarTab : function(doc, dlg, painel){
-            criarTabLinhaDoTempo(doc, dlg, painel);
+        criarTab : function(app, doc, dlg, painel){
+            criarTabLinhaDoTempo(app, doc, dlg, painel);
         }
     }
 };
