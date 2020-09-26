@@ -8,6 +8,7 @@ var TabSprites = function(){
 
     const factoryMenuComponents = new FactoryMenuComponents();  
     const managerLayers    = new FactoryManagerLayers();  
+    const arrayTamanhos = [1, 2, 4, 8];
 
     var indiceGrupoEscolhido = 0;
 
