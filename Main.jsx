@@ -20,7 +20,7 @@
     tabSprites.criarTab(app, doc, dlg, tpanel);
     
     var tabLinhaDoTempo = new TabLinhaDoTempo();
-    tabLinhaDoTempo.criarTab(doc, dlg, tpanel);
+    tabLinhaDoTempo.criarTab(app, doc, dlg, tpanel);
     
     var tabBones = new TabBones();
     tabBones.criarTab(app, doc, dlg, tpanel);
