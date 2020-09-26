@@ -4,18 +4,18 @@
 #include "utils/StringPrototypes.jsx"
 
 #include "factory/FactoryManagerLayers.jsx"
-#include "factory/FactoryMenuComponents.jsx"
+// #include "factory/FactoryMenuComponents.jsx"
 
 #include "funcionalidades/ManipulacaoArquivo.jsx"
-#include "funcionalidades/LinhaDoTempo.jsx"
 #include "funcionalidades/SpriteSheet.jsx"
 
 #include "uis/TabBones.jsx"
 #include "uis/TabLinhaDoTempo.jsx"
+#include "uis/TabSprites.jsx"
 
 (function(){
     const doc = app.activeDocument;
-    const factoryMenuComponents = new FactoryMenuComponents();           
+    // const factoryMenuComponents = new FactoryMenuComponents();           
     const printagem        = new Printagem("Main");    
     
     const managerLayers    = new FactoryManagerLayers();          
@@ -33,32 +33,35 @@
     tabBones.criarTab(app, doc, dlg, tpanel);
 
     var tabLinhaDoTempo = new TabLinhaDoTempo();
-    tabLinhaDoTempo.criarTab(doc, tpanel);
-    
-    var tabSprites = tpanel.add("tab", undefined, "Sprites");
-    var groupAcao = factoryMenuComponents.createGroup(tabSprites, "Grupo Acao:");    
-    var dlgList = groupAcao.add("listbox", undefined, layersOrganizados.arrayNickNames);
-    dlgList.onChange = function(){
-        indiceGrupoEscolhido = dlgList.selection.index;        
-    };   
-    
-    var groupSpriteSheet = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet escala:");            
-    var dropDown = groupSpriteSheet.add("dropdownlist", undefined, arrayTamanhos);
-    dropDown.selection = 0;
-    var btnSpritesheet = groupSpriteSheet.add("button", undefined, "Processar");
-    btnSpritesheet.onClick = function(){
-        var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);        
+    tabLinhaDoTempo.criarTab(doc, dlg, tpanel);
 
-        var manipulacaoArquivo = new ManipulacaoArquivo(app);         
-        var arquivoCopia = manipulacaoArquivo.criarCopiaComLayers(grupoEscolhido.originalName);  
+    var tabSprites = new TabSprites();
+    tabSprites.criarTab(app, doc, dlg, tpanel);
+    
+    // var tabSprites = tpanel.add("tab", undefined, "Sprites");
+    // var groupAcao = factoryMenuComponents.createGroup(tabSprites, "Grupo Acao:");    
+    // var dlgList = groupAcao.add("listbox", undefined, layersOrganizados.arrayNickNames);
+    // dlgList.onChange = function(){
+    //     indiceGrupoEscolhido = dlgList.selection.index;        
+    // };   
+    
+    // var groupSpriteSheet = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet escala:");            
+    // var dropDown = groupSpriteSheet.add("dropdownlist", undefined, arrayTamanhos);
+    // dropDown.selection = 0;
+    // var btnSpritesheet = groupSpriteSheet.add("button", undefined, "Processar");
+    // btnSpritesheet.onClick = function(){
+    //     var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);        
+
+    //     var manipulacaoArquivo = new ManipulacaoArquivo(app);         
+    //     var arquivoCopia = manipulacaoArquivo.criarCopiaComLayers(grupoEscolhido.originalName);  
         
-        var tamanhoOriginal = arquivoCopia.width;
-        manipulacaoArquivo.aumentarCanvas(arquivoCopia);
+    //     var tamanhoOriginal = arquivoCopia.width;
+    //     manipulacaoArquivo.aumentarCanvas(arquivoCopia);
 
-        var spriteSheet = new SpriteSheet(app);
-        spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, arrayTamanhos[dropDown.selection.index]);        
-        dlg.close();
-    };    
+    //     var spriteSheet = new SpriteSheet(app);
+    //     spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, arrayTamanhos[dropDown.selection.index]);        
+    //     dlg.close();
+    // };    
 
     //TAB DE HELPERS
     //var tabHelper = tpanel.add("tab", undefined, "Helpers");   
