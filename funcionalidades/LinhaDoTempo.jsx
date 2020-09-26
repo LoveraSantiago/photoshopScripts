@@ -90,9 +90,10 @@ var LinhaDoTempo = function(){
         executeAction( idsetd, desc2, DialogModes.NO );
     }
 
-    function criarFrames(qtdd){            
+    function criarFrames(app, qtdd){            
         for(var contador = 0; contador < qtdd - 1; contador++){                        
-            adicionar1Frame();             
+            adicionar1Frame();       
+            // app.refresh();      
         }                            
     }
 
@@ -112,13 +113,18 @@ var LinhaDoTempo = function(){
     }
 
     return{    
-        criarLinhaDoTempo : function(grupoAcaoEscolhido, tempoEscolhido){
+        criarLinhaDoTempo : function(app, grupoAcaoEscolhido, tempoEscolhido){
             limparFramesExistente();
+            // app.refresh();
             criarObjetoLinhaDoTempo(tempoEscolhido);
 
             grupoAcaoEscolhido.ligar();
-            criarFrames(grupoAcaoEscolhido.getQtddPoses());
+            // app.refresh();
+
+            criarFrames(app, grupoAcaoEscolhido.getQtddPoses());
+            
             associarLayerComFrame(grupoAcaoEscolhido.arrayPoses);
+            // app.refresh();
         }
     
     }
