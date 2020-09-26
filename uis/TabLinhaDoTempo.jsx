@@ -10,8 +10,8 @@ var TabLinhaDoTempo = function(){
 
     var indiceGrupoEscolhido = 0;
 
-    function criarTabLinhaDoTempo(doc, painel){
-        var tabLinhaDoTempo = painel.add("tab", undefined, "Linha do Tempo");
+    function criarTabLinhaDoTempo(doc, dlg, painel){
+        var tabLinhaDoTempo = painel.add("tab", undefined, "LinhaDoTempo");
         var groupAcao = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Grupo Acao:"); 
 
         var layersOrganizados = managerLayers.organizarLayers(doc.layers);
@@ -35,8 +35,8 @@ var TabLinhaDoTempo = function(){
     }
 
     return{
-        criarTab : function(doc, painel){
-            criarTabLinhaDoTempo(doc, painel);
+        criarTab : function(doc, dlg, painel){
+            criarTabLinhaDoTempo(doc, dlg, painel);
         }
     }
 };
