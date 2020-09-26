@@ -33,6 +33,7 @@
     var editTextEscala = groupEscala.add("edittext", undefined, "0");
     var btnProcessar = groupEscala.add("button", undefined, "Processar");
     btnProcessar.onClick = function(){      
+        printagem.printar("btn processar pressionado");
        var manipulacaoArquivo = new ManipulacaoArquivo(app);         
        var arquivoCopia = manipulacaoArquivo.criarCopia();     
 
@@ -49,14 +50,14 @@
         opacidade.todasCamadasVisiveis(doc);
     };       
     
-    var tabLinhaDoTempo = tpanel.add("tab", undefined, "Sprites");
-    var groupAcao = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Grupo Acao:");    
+    var tabSprites = tpanel.add("tab", undefined, "Sprites");
+    var groupAcao = factoryMenuComponents.createGroup(tabSprites, "Grupo Acao:");    
     var dlgList = groupAcao.add("listbox", undefined, layersOrganizados.arrayNickNames);
     dlgList.onChange = function(){
         indiceGrupoEscolhido = dlgList.selection.index;        
     };
     
-    var groupLinhaDoTempo = factoryMenuComponents.createGroup(tabLinhaDoTempo, "Linha do Tempo Grupos:");        
+    var groupLinhaDoTempo = factoryMenuComponents.createGroup(tabSprites, "Linha do Tempo Grupos:");        
     var btnLinhaDoTempo = groupLinhaDoTempo.add("button", undefined, "Processar");
     btnLinhaDoTempo.onClick = function(){
 
@@ -68,7 +69,7 @@
         dlg.close();
     };    
     
-    var groupSpriteSheet = factoryMenuComponents.createGroup(tabLinhaDoTempo, "SpriteSheet escala:");            
+    var groupSpriteSheet = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet escala:");            
     var dropDown = groupSpriteSheet.add("dropdownlist", undefined, arrayTamanhos);
     dropDown.selection = 0;
     var btnSpritesheet = groupSpriteSheet.add("button", undefined, "Processar");
