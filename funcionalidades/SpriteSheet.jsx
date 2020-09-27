@@ -21,29 +21,25 @@
             var doc = application.activeDocument;
             application.activeDocument = arquivoCopia;
 
-            var posicaoX = 0;
             var posicaoY = 0;
             for(var contadorGrupo = 0; contadorGrupo < arrayGrupoAcao.length; contadorGrupo++){
-
+                
+                var posicaoX = 0;
                 var grupoAtual = arrayGrupoAcao[contadorGrupo];
                 for(var contadorPoses = 0; contadorPoses < grupoAtual.getQtddPoses(); contadorPoses++){
 
                     var poseAtual = grupoAtual.getPoseDoIndice(contadorPoses);
-                    var nomePoseAtual = grupoAtual.originalName;
+                    var nomePoseAtual = poseAtual.name;
 
                     for(var contadorLayers = 0; contadorLayers < arquivoCopia.layers.length; contadorLayers++){
     
                         var layerAtual = arquivoCopia.layers[contadorLayers];
                         var nomeLayerAtual = layerAtual.name;
-                        if(nomePoseAtual == nomeLayerAtual){
-    
-                            posicaoX = 0;
-                            for(var contadorDeAcao = layerAtual.layers.length; contadorDeAcao >= 0; contadorDeAcao--){
-                                layerAtual.layers[contadorDeAcao].translate(posicaoX, posicaoY);
-                                posicaoX += widthOriginal;
-
-                                break;
-                            }
+                        if(nomePoseAtual == nomeLayerAtual){    
+                            
+                            layerAtual.translate(posicaoX, posicaoY);
+                            posicaoX += widthOriginal;
+                            break;
                         }
                     }
                 }
