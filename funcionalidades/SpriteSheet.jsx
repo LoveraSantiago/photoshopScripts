@@ -23,7 +23,7 @@
 
             var posicaoX = 0;
             var posicaoY = 0;
-            for(var contadorGrupo = 0; contadorGrupo < arrayGrupoAcao.lenght; contadorGrupo++){
+            for(var contadorGrupo = 0; contadorGrupo < arrayGrupoAcao.length; contadorGrupo++){
 
                 var grupoAtual = arrayGrupoAcao[contadorGrupo];
                 for(var contadorPoses = 0; contadorPoses < grupoAtual.getQtddPoses(); contadorPoses++){
