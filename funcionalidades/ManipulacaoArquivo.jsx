@@ -1,8 +1,13 @@
 #include "../utils/Util.jsx"
 
+#include "../factory/FactoryGrupoPose.jsx"
+#include "../factory/FactoryGrupoAcao.jsx"
+
 var ManipulacaoArquivo = function(app){
 
     const util = new Util();
+    const factoryGrupoPose = new FactoryGrupoPose();
+    const factoryGrupoAcao = new FactoryGrupoAcao();
     var application = app;
 
     function fazerCopia(doc){        
@@ -81,13 +86,13 @@ var ManipulacaoArquivo = function(app){
             for(var contador = doc.layers.length - 1; contador >= 0; contador--){
                 application.activeDocument = doc;
 
-                var layerAtual = doc.layers[contador];
-                var nomeLayer = layerAtual.name;                
+                var layerAtual = doc.layers[contador];                          
 
-                for(var subContador = layerAtual.layers.length -1; subContador >= 0; subContador--){
-                    var subLayerAtual = layerAtual.layers[subContador];
-                    subLayerAtual.duplicate(arquivoCopia);
-                }                
+                if(factoryGrupoAcao.isGrupoAcao(layerAtual)){
+                    for(var contadorSubLayers = 0; contadorSubLayers < layerAtual.layers.length; contadorSubLayers++){
+                        layerAtual.layers[contadorSubLayers].duplicate(arquivoCopia);
+                    }
+                }               
             }
 
             removerLayerPlanoDeFundo(arquivoCopia);         
