@@ -35,10 +35,10 @@ var ManipulacaoArquivo = function(app){
         aumentarCanvas : function(novoArq, multLargura, multHaltura){
             var doc = app.activeDocument;
             var novaLargura = doc.width * multLargura;
-            var novaHaltura = doc.length * multHaltura;
+            var novaHaltura = doc.height * multHaltura;
             
             app.activeDocument = novoArq;
-            novoArq.resizeCanvas(novaLargura, novoArq.heigth, AnchorPosition.MIDDLELEFT);        
+            novoArq.resizeCanvas(novaLargura, novaHaltura, AnchorPosition.MIDDLELEFT);        
             
              app.activeDocument = doc;
         },
