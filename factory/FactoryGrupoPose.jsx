@@ -11,12 +11,13 @@
             
             return{//OBJETO GRUPOPOSE
                 originalName : layerSet.name,
-                indice       : parseInt(splits[1]),
+                grupo        : parseInt(splits[1]),
+                indice       : parseInt(splits[2]),
                 layer        : layerSet,
                 desligar     : function(){
                     this.layer.visible = false;
                 },
-                ligar              : function(){
+                ligar        : function(){
                     this.layer.visible = true;
                 }
             }
