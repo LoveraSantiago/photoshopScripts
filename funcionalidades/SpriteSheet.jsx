@@ -26,22 +26,27 @@
             for(var contadorGrupo = 0; contadorGrupo < arrayGrupoAcao.lenght; contadorGrupo++){
 
                 var grupoAtual = arrayGrupoAcao[contadorGrupo];
-                var nomeAtual = grupoAtual.originalName;
+                for(var contadorPoses = 0; contadorPoses < grupoAtual.getQtddPoses(); contadorPoses++){
 
-                for(var contadorLayers = 0; contadorLayers < arquivoCopia.layers.length; contadorLayers++){
+                    var poseAtual = grupoAtual.getPoseDoIndice(contadorPoses);
+                    var nomePoseAtual = grupoAtual.originalName;
 
-                    var layerAtual = arquivoCopia.layers[contadorLayers];
-                    var nomeLayerAtual = layerAtual.name;
-                    if(nomeAtual == nomeLayerAtual){
+                    for(var contadorLayers = 0; contadorLayers < arquivoCopia.layers.length; contadorLayers++){
+    
+                        var layerAtual = arquivoCopia.layers[contadorLayers];
+                        var nomeLayerAtual = layerAtual.name;
+                        if(nomePoseAtual == nomeLayerAtual){
+    
+                            posicaoX = 0;
+                            for(var contadorDeAcao = layerAtual.layers.length; contadorDeAcao >= 0; contadorDeAcao--){
+                                layerAtual.layers[contadorDeAcao].translate(posicaoX, posicaoY);
+                                posicaoX += widthOriginal;
 
-                        posicaoX = 0;
-                        for(var contadorDeAcao = layerAtual.layers.length; contadorDeAcao >= 0; contadorDeAcao--){
-                            layerAtual.layers[contadorDeAcao].translate(posicaoX, posicaoY);
-                            posicaoX += widthOriginal;
+                                break;
+                            }
                         }
                     }
                 }
-
                 posicaoY += heightOriginal;
             }
 

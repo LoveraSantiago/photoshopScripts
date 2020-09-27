@@ -49,6 +49,10 @@ var FactoryGrupoAcao = function(){
                      return layers;
                  },
 
+                 getPoseDoIndice : function(indice){
+                    return layers[indice];
+                 },
+
                  getNomesLayerPoses : function(){
                     var nomes = [];
                     for(var contador = 0; contador < this.arrayPoses.length; contador++){
