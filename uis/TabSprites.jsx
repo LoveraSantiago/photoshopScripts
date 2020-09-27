@@ -1,4 +1,4 @@
-#include "../factory/FactoryMenuComponents.jsx"
+﻿#include "../factory/FactoryMenuComponents.jsx"
 #include "../factory/FactoryManagerLayers.jsx"
 
 #include "../funcionalidades/ManipulacaoArquivo.jsx"
@@ -61,10 +61,11 @@ var TabSprites = function(){
                 
             var manipulacaoArquivo = new ManipulacaoArquivo(app);    
             var arquivoCopia = manipulacaoArquivo.criarCopiaComTodosOsLayers();
-            manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupoTemp.getQtddPoses(), managerLayers.getQtddGrupos());
-
+            
             var larguraOriginal = arquivoCopia.width;
-            var halturaOriginal = arquivoCopia.length;
+            var halturaOriginal = arquivoCopia.height;
+            
+            manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupoTemp.getQtddPoses(), managerLayers.getQtddGrupos());
 
             var spriteSheet = new SpriteSheet(app);
             spriteSheet.criarSpriteSheetGeral(larguraOriginal, halturaOriginal, arquivoCopia, managerLayers.getArrayDeGrupoAcoes(), arrayTamanhos[dropDown.selection.index]);
