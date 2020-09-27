@@ -38,7 +38,7 @@ var ManipulacaoArquivo = function(app){
             var novaHaltura = doc.height * multHaltura;
             
             app.activeDocument = novoArq;
-            novoArq.resizeCanvas(novaLargura, novaHaltura, AnchorPosition.MIDDLELEFT);        
+            novoArq.resizeCanvas(novaLargura, novaHaltura, AnchorPosition.TOPLEFT);        
             
              app.activeDocument = doc;
         },
