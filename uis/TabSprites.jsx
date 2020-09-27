@@ -39,9 +39,9 @@ var TabSprites = function(){
     
             var manipulacaoArquivo = new ManipulacaoArquivo(app);         
             var arquivoCopia = manipulacaoArquivo.criarCopiaComLayers(grupoEscolhido.originalName);  
-            
             var tamanhoOriginal = arquivoCopia.width;
-            manipulacaoArquivo.aumentarCanvas(arquivoCopia);
+
+            manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupoEscolhido.getQtddPoses(), 1);            
     
             var spriteSheet = new SpriteSheet(app);
             spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, arrayTamanhos[dropDown.selection.index]);        
@@ -57,7 +57,18 @@ var TabSprites = function(){
 
         dropDown.selection = 0;
         btnSpritesheet.onClick = function(){
+            var grupoTemp = managerLayers.getGrupoAcaoEscolhido(0); 
                 
+            var manipulacaoArquivo = new ManipulacaoArquivo(app);    
+            var arquivoCopia = manipulacaoArquivo.criarCopiaComTodosOsLayers();
+            manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupoTemp.getQtddPoses(), managerLayers.getQtddGrupos());
+
+            var larguraOriginal = arquivoCopia.width;
+            var halturaOriginal = arquivoCopia.length;
+
+            var spriteSheet = new SpriteSheet(app);
+            spriteSheet.criarSpriteSheetGeral(larguraOriginal, halturaOriginal, arquivoCopia, managerLayers.getArrayDeGrupoAcoes(), arrayTamanhos[dropDown.selection.index]);
+
             dlg.close();
         };    
     }

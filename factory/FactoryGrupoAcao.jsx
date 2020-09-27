@@ -36,9 +36,11 @@ var FactoryGrupoAcao = function(){
                  indice        : parseInt(split[1]),
                  layerSet      : layerSet,
                  arrayPoses    : arrayPosesTemp,
+
                  getQtddPoses : function(){
                      return this.arrayPoses.length;
                  },
+
                  getLayersPoses : function(){
                      var layers = [];
                      for(var contador = 0; contador < this.arrayPoses.length; contador++){
@@ -46,6 +48,7 @@ var FactoryGrupoAcao = function(){
                      }
                      return layers;
                  },
+
                  getNomesLayerPoses : function(){
                     var nomes = [];
                     for(var contador = 0; contador < this.arrayPoses.length; contador++){
@@ -53,12 +56,15 @@ var FactoryGrupoAcao = function(){
                     }
                     return nomes;
                  },
+
                  toString         : function(){
                      return "Grupo Acao :" + this.nickName;
                  },
+
                  desligar       : function(){
                      this.layerSet.visible = false;
                  },
+                 
                  ligar            : function(){
                      this.layerSet.visible = true;
                  }

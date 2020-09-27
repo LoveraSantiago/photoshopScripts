@@ -27,9 +27,10 @@ var ManipulacaoArquivo = function(app){
     }
 
     return{
-        aumentarCanvas : function(novoArq){
+        aumentarCanvas : function(novoArq, multLargura, multHaltura){
             var doc = app.activeDocument;
-            var novaLargura = doc.width * novoArq.layers.length;
+            var novaLargura = doc.width * multLargura;
+            var novaHaltura = doc.length * multHaltura;
             
             app.activeDocument = novoArq;
             novoArq.resizeCanvas(novaLargura, novoArq.heigth, AnchorPosition.MIDDLELEFT);        
@@ -67,6 +68,26 @@ var ManipulacaoArquivo = function(app){
                     }
 
                 }
+            }
+
+            removerLayerPlanoDeFundo(arquivoCopia);         
+            return arquivoCopia;
+        },
+
+        criarCopiaComTodosOsLayers : function(){
+            var doc = application.activeDocument;        
+            var arquivoCopia = fazerCopia(doc);
+
+            for(var contador = doc.layers.length - 1; contador >= 0; contador--){
+                application.activeDocument = doc;
+
+                var layerAtual = doc.layers[contador];
+                var nomeLayer = layerAtual.name;                
+
+                for(var subContador = layerAtual.layers.length -1; subContador >= 0; subContador--){
+                    var subLayerAtual = layerAtual.layers[subContador];
+                    subLayerAtual.duplicate(arquivoCopia);
+                }                
             }
 
             removerLayerPlanoDeFundo(arquivoCopia);         

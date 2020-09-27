@@ -30,9 +30,17 @@ var FactoryManagerLayers = function(){
                 arrayNickNames : nickNameLayers
             }
         },
+
+        getArrayDeGrupoAcoes : function(){
+            return arrayGrupoAcao;
+        },
     
         getGrupoAcaoEscolhido : function(indice){
             return arrayGrupoAcao[indice];
+        },
+
+        getQtddGrupos : function(){
+            return arrayGrupoAcao.length;
         },
 
         desligarTodosGruposAcoes : function(){
