@@ -23,14 +23,17 @@ var TabSprites = function(){
             indiceGrupoEscolhido = dlgList.selection.index;        
         };   
         
-        criarGrupoProcessamentoPorAcao(tabSprites);
+        criarGrupoProcessamentoPorAcao(app, dlg, tabSprites);
+        criarGrupoProcessamentoGeral(app, dlg, tabSprites);
     }
     
-    function criarGrupoProcessamentoPorAcao(tabSprites){
-        var groupSpriteSheet = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet escala:");            
-        var dropDown = groupSpriteSheet.add("dropdownlist", undefined, arrayTamanhos);
+    function criarGrupoProcessamentoPorAcao(app, dlg, tabSprites){
+        var groupSpriteSheetPorAcao = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet por acao:");   
+        groupSpriteSheetPorAcao.add("statictext", undefined, "Tam:");
+        var dropDown = groupSpriteSheetPorAcao.add("dropdownlist", undefined, arrayTamanhos);
+        
         dropDown.selection = 0;
-        var btnSpritesheet = groupSpriteSheet.add("button", undefined, "Processar");
+        var btnSpritesheet = groupSpriteSheetPorAcao.add("button", undefined, "Processar");
         btnSpritesheet.onClick = function(){
             var grupoEscolhido = managerLayers.getGrupoAcaoEscolhido(indiceGrupoEscolhido);        
     
@@ -46,7 +49,18 @@ var TabSprites = function(){
         };    
     }
 
-    
+    function criarGrupoProcessamentoGeral(app, dlg, tabSprites){
+        var groupSpriteSheetGeral = factoryMenuComponents.createGroup(tabSprites, "SpriteSheet geral:");   
+        groupSpriteSheetGeral.add("statictext", undefined, "Tam:");         
+        var dropDown = groupSpriteSheetGeral.add("dropdownlist", undefined, arrayTamanhos);
+        var btnSpritesheet = groupSpriteSheetGeral.add("button", undefined, "Processar");
+
+        dropDown.selection = 0;
+        btnSpritesheet.onClick = function(){
+                
+            dlg.close();
+        };    
+    }
 
     return{
         criarTab : function(app, doc, dlg, painel){
