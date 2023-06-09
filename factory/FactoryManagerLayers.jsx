@@ -1,11 +1,9 @@
 ﻿#include "FactoryGrupoAcao.jsx"
-#include "../funcionalidades/SpriteSheet.jsx"
 #include "../utils/Util.jsx"
 
 var FactoryManagerLayers = function(){    
     const factoryGrupoAcao = new FactoryGrupoAcao();     
-    const util             = new Util();    
-    const spriteSheet      = new SpriteSheet();
+    const util             = new Util();        
     
     var arrayGrupoAcao = [];
     
