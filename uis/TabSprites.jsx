@@ -45,9 +45,9 @@ var TabSprites = function(){
 
             manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupoEscolhido.getQtddPoses(), 1);            
     
-            var spriteSheet = new SpriteSheet(app);
+            var spriteSheet = new SpriteSheet(app, arquivoCopia);
             var tamanhoEscolhido = arrayTamanhos[dropDown.selection.index];
-            spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, tamanhoEscolhido);        
+            spriteSheet.criarSpriteSheet(tamanhoOriginal, tamanhoEscolhido);        
             dlg.close();
         };    
     }
@@ -70,9 +70,9 @@ var TabSprites = function(){
             
             manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupo.getQtddPoses(), managerLayers.getQtddGrupos());
 
-            var spriteSheet = new SpriteSheet(app);
+            var spriteSheet = new SpriteSheet(app, arquivoCopia);
             var tamanhoEscolhido = arrayTamanhos[dropDown.selection.index]
-            spriteSheet.criarSpriteSheetGeral(larguraOriginal, halturaOriginal, arquivoCopia, managerLayers.getArrayDeGrupoAcoes(), tamanhoEscolhido);
+            spriteSheet.criarSpriteSheetGeral(larguraOriginal, halturaOriginal, managerLayers.getArrayDeGrupoAcoes(), tamanhoEscolhido);
 
             dlg.close();
         };    
@@ -86,7 +86,7 @@ var TabSprites = function(){
         var dropDownColunas = groupSpriteSheetDivisao.add("dropdownlist", undefined, arrayTamanhos);
         var btnSpritesheet = groupSpriteSheetDivisao.add("button", undefined, "Processar");
 
-        dropDownLinhas.selection = 0;
+        dropDownLinhas.selection  = 0;
         dropDownColunas.selection = 0;
 
         btnSpritesheet.onClick = function(){
@@ -95,9 +95,15 @@ var TabSprites = function(){
             var manipulacaoArquivo = new ManipulacaoArquivo(app);            
             var arquivoCopia = manipulacaoArquivo.criarCopiaComTodosOsLayers();
 
-            var tamanhoLinhas = arrayTamanhos[dropDownLinhas.selection.index];
-            manipulacaoArquivo.aumentarCanvas(arquivoCopia, 1, tamanhoLinhas); 
+            var larguraOriginal = arquivoCopia.width;
+            var halturaOriginal = arquivoCopia.height;
 
+            var qtdLinhas = arrayTamanhos[dropDownLinhas.selection.index];
+            var qtdColunas = arrayTamanhos[dropDownColunas.selection.index];
+            manipulacaoArquivo.aumentarCanvas(arquivoCopia, 1, qtdLinhas); 
+
+            var spriteSheet = new SpriteSheet(app, arquivoCopia);
+            spriteSheet.dividirSpriteSheet(larguraOriginal, halturaOriginal, qtdColunas, qtdLinhas);
             dlg.close();
         };
     }

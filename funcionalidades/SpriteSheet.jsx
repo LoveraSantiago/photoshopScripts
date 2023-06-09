@@ -1,9 +1,10 @@
-﻿var SpriteSheet = function(app){
+﻿var SpriteSheet = function(app, arqCopia){
 
     var application = app;
+    var arquivoCopia = arqCopia;
     
     return {
-        criarSpriteSheet : function(widthOriginal, arquivoCopia, tamanhoEscolhido){
+        criarSpriteSheet : function(widthOriginal, tamanhoEscolhido){
             var doc = application.activeDocument;
 
             application.activeDocument = arquivoCopia;
@@ -17,7 +18,7 @@
             application.activeDocument = doc;
         },
         
-        criarSpriteSheetGeral : function(widthOriginal, heightOriginal, arquivoCopia, arrayGrupoAcao, tamanhoEscolhido){
+        criarSpriteSheetGeral : function(widthOriginal, heightOriginal, arrayGrupoAcao, tamanhoEscolhido){
             var doc = application.activeDocument;
             application.activeDocument = arquivoCopia;
 
@@ -45,10 +46,19 @@
                 }
                 posicaoY += heightOriginal;
             }
-
             arquivoCopia.resizeImage(UnitValue((arquivoCopia.width / tamanhoEscolhido) ,"px"), null, null, ResampleMethod.BICUBIC)
-
             application.activeDocument = doc;
+        },
+
+        dividirSpriteSheet(widthOriginal, heightOriginal, colunas, linhas){
+            var doc = application.activeDocument;
+            application.activeDocument = arquivoCopia;
+
+            for(var contadorLinha = 0; contadorLinha < linhas; contadorLinha++){
+                for(var contadorColuna = 0; contadorColuna < colunas; contadorColuna++){
+
+                }
+            }
         }
     }
 };
