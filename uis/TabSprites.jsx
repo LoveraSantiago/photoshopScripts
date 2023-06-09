@@ -9,6 +9,7 @@ var TabSprites = function(){
     const factoryMenuComponents = new FactoryMenuComponents();  
     const managerLayers    = new FactoryManagerLayers();  
     const arrayTamanhos = [1, 2, 4, 8];
+    const arrayOrdenado = [2, 3, 4, 5, 6, 7, 8, 9, 10];
 
     var indiceGrupoEscolhido = 0;
 
@@ -25,6 +26,7 @@ var TabSprites = function(){
         
         criarGrupoProcessamentoPorAcao(app, dlg, tabSprites);
         criarGrupoProcessamentoGeral(app, dlg, tabSprites);
+        criarGrupoProcessamentoDivisaoSpriteSheet(app, dlg, tabSprites);
     }
     
     function criarGrupoProcessamentoPorAcao(app, dlg, tabSprites){
@@ -72,6 +74,22 @@ var TabSprites = function(){
 
             dlg.close();
         };    
+    }
+
+    function criarGrupoProcessamentoDivisaoSpriteSheet(app, dlg, tabSprites){
+        var groupSpriteSheetDivisao = factoryMenuComponents.createGroup(tabSprites, "Dividir SpriteSheet")
+        groupSpriteSheetDivisao.add("statictext", undefined, "L:");
+        var dropDownLinhas = groupSpriteSheetDivisao.add("dropdownlist", undefined, arrayTamanhos);
+        groupSpriteSheetDivisao.add("statictext", undefined, "C:");
+        var dropDownColunas = groupSpriteSheetDivisao.add("dropdownlist", undefined, arrayTamanhos);
+        var btnSpritesheet = groupSpriteSheetDivisao.add("button", undefined, "Processar");
+
+        dropDownLinhas.selection = 0;
+        dropDownColunas.selection = 0;
+
+        btnSpritesheet.onClick = function(){
+            dlg.close();
+        };
     }
 
     return{
