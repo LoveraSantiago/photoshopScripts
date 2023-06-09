@@ -46,7 +46,8 @@ var TabSprites = function(){
             manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupoEscolhido.getQtddPoses(), 1);            
     
             var spriteSheet = new SpriteSheet(app);
-            spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, arrayTamanhos[dropDown.selection.index]);        
+            var tamanhoEscolhido = arrayTamanhos[dropDown.selection.index];
+            spriteSheet.criarSpriteSheet(tamanhoOriginal, arquivoCopia, tamanhoEscolhido);        
             dlg.close();
         };    
     }
@@ -59,7 +60,7 @@ var TabSprites = function(){
 
         dropDown.selection = 0;
         btnSpritesheet.onClick = function(){
-            var grupoTemp = managerLayers.getGrupoAcaoEscolhido(0); 
+            var grupo = managerLayers.getGrupoAcaoEscolhido(0); 
                 
             var manipulacaoArquivo = new ManipulacaoArquivo(app);    
             var arquivoCopia = manipulacaoArquivo.criarCopiaComTodosOsLayers();
@@ -67,10 +68,11 @@ var TabSprites = function(){
             var larguraOriginal = arquivoCopia.width;
             var halturaOriginal = arquivoCopia.height;
             
-            manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupoTemp.getQtddPoses(), managerLayers.getQtddGrupos());
+            manipulacaoArquivo.aumentarCanvas(arquivoCopia, grupo.getQtddPoses(), managerLayers.getQtddGrupos());
 
             var spriteSheet = new SpriteSheet(app);
-            spriteSheet.criarSpriteSheetGeral(larguraOriginal, halturaOriginal, arquivoCopia, managerLayers.getArrayDeGrupoAcoes(), arrayTamanhos[dropDown.selection.index]);
+            var tamanhoEscolhido = arrayTamanhos[dropDown.selection.index]
+            spriteSheet.criarSpriteSheetGeral(larguraOriginal, halturaOriginal, arquivoCopia, managerLayers.getArrayDeGrupoAcoes(), tamanhoEscolhido);
 
             dlg.close();
         };    
@@ -88,6 +90,14 @@ var TabSprites = function(){
         dropDownColunas.selection = 0;
 
         btnSpritesheet.onClick = function(){
+            var grupo = managerLayers.getGrupoAcaoEscolhido(0); 
+            
+            var manipulacaoArquivo = new ManipulacaoArquivo(app);            
+            var arquivoCopia = manipulacaoArquivo.criarCopiaComTodosOsLayers();
+
+            var tamanhoLinhas = arrayTamanhos[dropDownLinhas.selection.index];
+            manipulacaoArquivo.aumentarCanvas(arquivoCopia, 1, tamanhoLinhas); 
+
             dlg.close();
         };
     }
