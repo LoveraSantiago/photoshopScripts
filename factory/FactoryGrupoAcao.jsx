@@ -71,6 +71,10 @@ var FactoryGrupoAcao = function(){
                  
                  ligar            : function(){
                      this.layerSet.visible = true;
+                 },
+
+                 indiceExiste : function(indice){
+                    return indice < (this.getQtddPoses() - 1);
                  }
               }           
          }     
